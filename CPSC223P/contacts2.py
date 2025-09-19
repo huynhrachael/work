@@ -15,56 +15,71 @@ def print_list():
 	print("=====   ===========           =========")
 	for i in range(len(contact_list)):
 		print(f'{str(i):8}{contact_list[i][0]:22}{contact_list[i][1]:22}')
-	
-def add_contact(contact_list):
+
+def add_contact(contact_list,/, *, first_name, last_name):
 	"""Add new contact to the contact list"""
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
 	newContact = [first_name, last_name]
 	contact_list.append(newContact)
-	#return (contact_list)
 	#print(contact_list)
 	
-def modify_contact(contact_list):
+def modify_contact(contact_list,/, *,first_name, last_name, modify_index):
 	"""Modify the contact list"""
 	modify_index = int(input("Which contact index would you like to modify? "))	
-	#for modify_index in range(len(contact_list)):
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
-	contact_list[modify_index][0] = first_name
-	contact_list[modify_index][1] = last_name
-		#return (modify_index,contact_list[modify_index])
-	#print(contact_list)
-	
-def delete_contact(contact_list):
+	if modify_index in range(len(contact_list)):
+		contact_list[modify_index][0] = first_name
+		contact_list[modify_index][1] = last_name
+		return True
+	elif modify_index not in range(len(contact_list)):
+		print("Invalid index number")
+		return False
+		
+
+def delete_contact(contact_list,/,*,delete_index):
 	"""Delete a contact from the contact list"""
-	
 	delete_index = int(input("Which contact index would you like to delete? "))
-	#for delete_index in ranglen(contact_list):
-	del contact_list[delete_index]
-		#contact_list.remove(contact_list[i])	
-	#return (contact_list)
-	#print(contact_list)
+	if delete_index in range(len(contact_list)):
+		del contact_list[delete_index]
+		return True
+	else :
+		print("Invalid index number")
+		return False
+		
+def sort_contacts(contact_list,/,*,column):
+	#name = contact_list 
+	#for name in range(len(contact_list)):
+	#	if contact_list[name][0]:
+	#		return first_name
+	#	elif contact_list[name][1]:
+	#		return last_name
+	if column == 0:
+		contact_list.sort(key = lambda x:x[0].lower())
+	elif column == 1:
+		contact_list.sort(key = lambda x:x[1].lower())	
+	else:
+		print("Invalid")
 	
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
