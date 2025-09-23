@@ -12,8 +12,8 @@ def print_dict():
 	print("=============== CONTACT LIST ===============")
 	print("Last Name    First Name            Phone")
 	print("==========   ===========           =========")
-	for id, new_contact in contact_dict.items():
-		print(f'{str(i):8}{contact_list[i][0]:22}{contact_list[i][1]:22}')
+	for k, v in contact_dict.items():
+		print("{} : {}".format(k, v))
 		 
 def add_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Add new contact to the contact dictionary"""
@@ -21,7 +21,7 @@ def add_contact(contact_dict,/, *, id, first_name, last_name):
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
 	new_contact = [first_name, last_name]
-	contact_dict= { id : new_contact}
+	contact_dict= {id : new_contact}
 	if id is not int:
 		return False	
 		print("invalid input. Non-numeric value.")
