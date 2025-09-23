@@ -23,7 +23,7 @@ while True:
 	elif menu_choice == "3":
 		delete_contact(contact_dict, id = "0")
 	elif menu_choice == "4":
-		print(contact_dict)
+		print_dict()
 	elif menu_choice == "5":
 		find_contact(contact_dict)
 	elif menu_choice == "6":

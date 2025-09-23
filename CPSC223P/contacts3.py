@@ -8,6 +8,13 @@
 
 contact_dict = {}
 
+def print_dict():
+	print("=============== CONTACT LIST ===============")
+	print("Last Name    First Name            Phone")
+	print("==========   ===========           =========")
+	for id, new_contact in contact_dict.items():
+		print(f'{str(i):8}{contact_list[i][0]:22}{contact_list[i][1]:22}')
+		 
 def add_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Add new contact to the contact dictionary"""
 	id = input("Enter phone number: ")
@@ -15,14 +22,15 @@ def add_contact(contact_dict,/, *, id, first_name, last_name):
 	last_name = input("Enter Last Name: ")
 	new_contact = [first_name, last_name]
 	contact_dict= { id : new_contact}
+	if id is not int:
+		return False	
+		print("invalid input. Non-numeric value.")
 	if id in range(len(contact_dict)):
 		print("Phone number already exists")
 		return "error"
-	elif id not int:
-		print("invalid input. Non-numeric value.")
 	elif id not in range(len(contact_dict)):
 		contact_dict[id] = new_contact
-		return newContact	
+		return contact_dict	
 	
 	
 def modify_contact(contact_dict,/, *, id, first_name, last_name):
@@ -32,7 +40,7 @@ def modify_contact(contact_dict,/, *, id, first_name, last_name):
 	last_name = input("Enter Last Name: ")
 	
 	if id in range(len(contact_dict)):
-		print("Modified: " contact_dict[id])
+		print("Modified: ", contact_dict[id])
 		return contact_dict
 	elif id not in range(len(contact_dict)):
 		print("Phone number does not exist. ")
@@ -40,13 +48,15 @@ def modify_contact(contact_dict,/, *, id, first_name, last_name):
 
 def delete_contact(contact_dict,/,*, id):
 	id = input("Enter phone number: ")
+	if id.isdigit():
+		return true
+	else:
+		print("Invalid input. Non-numeric value.")
 	if id not in range(len(contact_dict)):
 		print("Invalid phone number.")
-	elif id not int:
-		print("Invalid input. Non-numeric value.")
 	elif id in range(len(contact_dict)):
 		del contact_dict[id]
-		return contact_dict
+		return contact_dict	
 
 def sort_contacts(contact_dict,/):
 	contact_dict = {key: contact_dict[key] for key in sorted(contact_dict)}
@@ -62,6 +72,8 @@ def find_contact(contact_dict,/,*, find):
 		newContact_dict.append(contact_dict[id])
 		Newcontact_dict = {key: Newcontact_dict[key] for key in sorted(Newcontact_dict)}
 		return newContact_dict
+		
+
 		 
 	
 	
