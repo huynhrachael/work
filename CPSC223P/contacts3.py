@@ -13,15 +13,16 @@ def add_contact(contact_dict,/, *, id, first_name, last_name):
 	id = input("Enter phone number: ")
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
-	newContact = [first_name, last_name]
-	contact_dict[id]= newContact
+	new_contact = [first_name, last_name]
+	contact_dict= { id : new_contact}
 	if id in range(len(contact_dict)):
 		print("Phone number already exists")
 		return "error"
+	elif id not int:
+		print("invalid input. Non-numeric value.")
 	elif id not in range(len(contact_dict)):
-		contact_dict[id].append(newContact)
-		return newContact
-	#contact_dict = {input("Enter phone number: "): input("Enter First Name: ") input("Enter Last Name: ")	
+		contact_dict[id] = new_contact
+		return newContact	
 	
 	
 def modify_contact(contact_dict,/, *, id, first_name, last_name):
@@ -29,10 +30,9 @@ def modify_contact(contact_dict,/, *, id, first_name, last_name):
 	id = input("Enter phone number: ")
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
+	
 	if id in range(len(contact_dict)):
-		contact_dict[id][0] = first_name
-		contact_dict[id][1] = last_name
-		print("Modified: ")
+		print("Modified: " contact_dict[id])
 		return contact_dict
 	elif id not in range(len(contact_dict)):
 		print("Phone number does not exist. ")
@@ -42,9 +42,10 @@ def delete_contact(contact_dict,/,*, id):
 	id = input("Enter phone number: ")
 	if id not in range(len(contact_dict)):
 		print("Invalid phone number.")
+	elif id not int:
+		print("Invalid input. Non-numeric value.")
 	elif id in range(len(contact_dict)):
-		del contact_dict[id][0]
-		del contact_dict[id][1]
+		del contact_dict[id]
 		return contact_dict
 
 def sort_contacts(contact_dict,/):
@@ -52,7 +53,6 @@ def sort_contacts(contact_dict,/):
 	return contact_dict
 	
 def find_contact(contact_dict,/,*, find):
-	newContact_dict = {}
 	find = contact_dict[id]
 	if find in range(len(contact_dict[id][first_name])):
 		newContact_dict.append(contact_dict[id])
