@@ -1,0 +1,2 @@
+encrypted: Encryption isn't just a buzzword. It's a vital defense in our modern digital battleground where data breaches are far too common.
+encrypted: None
