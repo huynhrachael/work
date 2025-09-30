@@ -1,6 +1,6 @@
 # Rachael Huynh
 # CWID: 886351212
-# September 18th, 2025
+# September 30th, 2025
 # Create a Employee contact list which contains a list of contacts that can be modified and deleted
 
 #first_name = []
@@ -13,7 +13,7 @@ def print_dict():
 	print("Last Name    First Name            Phone")
 	print("==========   ===========           =========")
 	for k, v in contact_dict.items():
-		print("{} : {}".format(k, v))
+		print(f"{k}: {v}")
 		 
 def add_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Add new contact to the contact dictionary"""
@@ -21,17 +21,17 @@ def add_contact(contact_dict,/, *, id, first_name, last_name):
 	first_name = input("Enter First Name: ")
 	last_name = input("Enter Last Name: ")
 	new_contact = [first_name, last_name]
-	contact_dict= {id : new_contact}
-	if id is not int:
-		return False	
-		print("invalid input. Non-numeric value.")
+	#if id is not int:
+	#	print("invalid input. Non-numeric value.")
+	#	return False	
 	if id in range(len(contact_dict)):
 		print("Phone number already exists")
-		return "error"
-	elif id not in range(len(contact_dict)):
-		contact_dict[id] = new_contact
-		return contact_dict	
-	
+		return "error"	
+	for k,v in contact_dict.items():
+		#if id not in range(len(contact_dict)):
+		contact_dict.append([k[id], v[new_contact]])
+		return contact_dict
+		print(contact_dict)
 	
 def modify_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Modify the contact list"""

@@ -1,6 +1,6 @@
 # Rachael Huynh
 # CWID: 886351212
-# September 18th, 2025
+# September 30th, 2025
 # Create a Employee contact list which contains a list of contacts that can be modified and deleted
 
 from contacts3 import*
@@ -17,7 +17,7 @@ while True:
 	menu_choice = input("Enter a menu choice(number): ")
 		
 	if menu_choice == "1":
-		add_contact(contact_dict, id = "0", first_name = "rachael", last_name = "huynh")
+		add_contact(contact_dict, id = '0', first_name = 'rachael', last_name = 'huynh')
 	elif menu_choice == "2":
 		modify_contact(contact_dict,id = "0", first_name= "rachael", last_name = "huynh",)
 	elif menu_choice == "3":
