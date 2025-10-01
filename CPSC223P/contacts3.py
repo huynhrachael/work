@@ -8,71 +8,87 @@
 
 contact_dict = {}
 
-def print_dict():
+def print_dict(contact_dict):
 	print("=============== CONTACT LIST ===============")
 	print("Last Name    First Name            Phone")
 	print("==========   ===========           =========")
 	for k, v in contact_dict.items():
-		print(f"{k}: {v}")
+		print(f'{v[1]:13}{v[0]:21}{k:10}')
 		 
 def add_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Add new contact to the contact dictionary"""
-	id = input("Enter phone number: ")
-	first_name = input("Enter First Name: ")
-	last_name = input("Enter Last Name: ")
-	new_contact = [first_name, last_name]
-	#if id is not int:
-	#	print("invalid input. Non-numeric value.")
-	#	return False	
-	if id in range(len(contact_dict)):
-		print("Phone number already exists")
-		return "error"	
-	for k,v in contact_dict.items():
-		#if id not in range(len(contact_dict)):
-		contact_dict.append([k[id], v[new_contact]])
-		return contact_dict
-		print(contact_dict)
+	while True:
+		try:
+			id = int(input("Enter phone number: "))
+			first_name = input("Enter First Name: ")
+			last_name = input("Enter Last Name: ")
+			new_contact = [first_name, last_name]
+			if id in contact_dict:	
+				print("PHONE NUMBERS ALREADY EXISTS.")
+				return "error"
+			print("Added: ", new_contact)	
+			contact_dict[id]= new_contact
+			return contact_dict
+		except ValueError:
+			print("INVALID PHONE NUMBER. ")
+		
 	
 def modify_contact(contact_dict,/, *, id, first_name, last_name):
 	"""Modify the contact list"""
-	id = input("Enter phone number: ")
-	first_name = input("Enter First Name: ")
-	last_name = input("Enter Last Name: ")
+	while True:
+		try:
+			id = int(input("Enter phone number: "))
+			first_name = input("Enter First Name: ")
+			last_name = input("Enter Last Name: ")
+			modify_contact = [first_name, last_name]
+			if id not in contact_dict:	
+				print("PHONE NUMBERS DOESN'T EXIST.")
+				return "error"
+			contact_dict[id] = modify_contact
+			print("Modified: ", modify_contact )
+			return contact_dict
+		except ValueError:
+			print("INVALID MODIFICATION. ")
 	
-	if id in range(len(contact_dict)):
-		print("Modified: ", contact_dict[id])
-		return contact_dict
-	elif id not in range(len(contact_dict)):
-		print("Phone number does not exist. ")
-		return "error"
-
+	
 def delete_contact(contact_dict,/,*, id):
-	id = input("Enter phone number: ")
-	if id.isdigit():
-		return true
-	else:
-		print("Invalid input. Non-numeric value.")
-	if id not in range(len(contact_dict)):
-		print("Invalid phone number.")
-	elif id in range(len(contact_dict)):
-		del contact_dict[id]
-		return contact_dict	
-
+	while True:
+		try:
+			id = int(input("Enter phone number: "))
+			if id not in contact_dict:
+				print("PHONE NUMBER DOESN'T EXIST.")
+			elif id in contact_dict:
+				r = contact_dict.pop(id)
+				print("Delete: ", r)
+			return contact_dict
+		except ValueError:
+			print("INVALID DELETE.")	
+			
 def sort_contacts(contact_dict,/):
-	contact_dict = {key: contact_dict[key] for key in sorted(contact_dict)}
-	return contact_dict
+	sort_contact_dict = sorted(contact_dict.items(), key = lambda v: v[1][1].lower())
+	return sort_contact_dict
 	
 def find_contact(contact_dict,/,*, find):
-	find = contact_dict[id]
-	if find in range(len(contact_dict[id][first_name])):
-		newContact_dict.append(contact_dict[id])
-		Newcontact_dict = {key: Newcontact_dict[key] for key in sorted(Newcontact_dict)}
-		return newContact_dict
-	elif find in range(len(contact_dict[id][last_name])):
-		newContact_dict.append(contact_dict[id])
-		Newcontact_dict = {key: Newcontact_dict[key] for key in sorted(Newcontact_dict)}
-		return newContact_dict
+	find_contact = {}
+	find = input("Enter Search String: ")
+	for k,v in contact_dict.items():
+		if find in v[1].lower():
+			find_contact[k] = v
+			sort_contact = dict(sorted(find_contact.items(), key = lambda v: v[1][1].lower()))
+		'''if find in v:
+			find_contact[k] = v
+			sort_contact = dict(sorted(find_contact.items(), key = lambda k: string(k[1][1]).lower()))
+		'''
+
+	print("=============== FOUND CONTACT(S) ===============")
+	print("Last Name    First Name         Phone")
+	print("==========   ===========        =========")
+	for k, v in sort_contact.items():
+		print(f'{v[1]:13}{v[0]:21}{k:10}')
 		
+	return sort_contact
+		
+	
 
 		 
 	

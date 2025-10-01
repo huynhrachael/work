@@ -14,7 +14,7 @@ def list_of_names(scores,/):
 			
 
 def student_hw_avg(scores,/,*, id):
-	if not scores:
+	if not scores:lis
 		print("Invalid")
 		return None
 	else:
